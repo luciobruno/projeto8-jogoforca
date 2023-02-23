@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
+
+body{
+    font-family: 'Roboto',sans-serif;
+}
+img{
+    width: 400px;
+    height: 467px;
+}
+button:hover{
+    cursor: pointer;
+}
+.jogo{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 59px;
+    margin-bottom: 70px;
+}
+.botao-palavra button{
+    width: 200px;
+    height: 60px;
+    background-color: #27ae60;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    margin-top: 30px;
+    font-style: normal;
+}
+.botao-palavra{
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.palavra{
+    display: flex;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 68px;
+    letter-spacing: 0.25em;
+    margin-top: 282px;
+}
+.letras{
+    margin: 0 auto;
+    width: 680px;
+    height: 91px;
+}
+.letras button{
+    margin: 6px;
+    width: 40px;
+    height: 40px;
+    background-color: #e1ecf4;
+    border: 1px solid #7aa7c7;
+    color: #39739D;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 700;
+    font-style: normal;
+}
+button:disabled{
+    background-color: #9faab5;
+    color: #798a9f;
+}
