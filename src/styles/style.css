@@ -65,3 +65,6 @@ button:disabled{
     background-color: #9faab5;
     color: #798a9f;
 }
+.hidden{
+    display: none;
+}
