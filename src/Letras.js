@@ -1,9 +1,28 @@
-export default function Letras({ habilitarButton, setHabilitarButton, setError, error }) {
+export default function Letras({ habilitarButton, setError, error, setHabilitado, habilitado, palavraSeparada, setUnderlines,underlines }) {
 
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
-    function desativar(e) {
-        setHabilitarButton(true);
+    function desativar(letra) {
+        const listaHabilitados = [...habilitado,letra];
+        setHabilitado(listaHabilitados);
+        testarLetra(letra);
+    }
+
+    function testarLetra(letra){
+        let teste = 0;
+        let underline = underlines;
+        const caractereDaPalavra = letra.toLowerCase();
+        for(let i=0;i<palavraSeparada.length;i++){
+            let caractere = palavraSeparada[i];
+            if(caractere === caractereDaPalavra){
+                teste +=1;
+                underline[i] = caractere;
+                setUnderlines(underline);
+            }  
+        }
+        if(teste===0){
+            setError(error+1);
+        }
     }
 
     function Letra(props) {
@@ -11,7 +30,7 @@ export default function Letras({ habilitarButton, setHabilitarButton, setError, 
         const letra = props.toUpperCase();
 
         return (
-            <button disabled={habilitarButton} onClick={desativar} key={letra}>{letra}</button>
+            <button disabled={habilitarButton || habilitado.includes(letra)} onClick={() => desativar(letra)} key={letra}>{letra}</button>
         );
 
     }

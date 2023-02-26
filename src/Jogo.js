@@ -7,31 +7,26 @@ import forca5 from "./assets/forca5.png";
 import forca6 from "./assets/forca6.png";
 import palavras from "./palavras";
 
-export default function Jogo({setHabilitarButton,error,setPalavraNaTela,palavraNaTela}) {
+export default function Jogo({setHabilitarButton,error,setPalavraNaTela,palavraNaTela,palavraSeparada,setPalavraSeparada,underlines,setUnderlines}) {
 
     const forcas = [forca0,forca1,forca2,forca3,forca4,forca5,forca6];
     const listaPalavras = palavras;
     let palavra = "";
-    let palavraSeparada = [];
-    let underlines = [];
 
     function habilitarButton(){
         setHabilitarButton(false);
-        selecionarPalavra();
-        criarUnderlines();
-    }
-
-    function selecionarPalavra(){
-        if(palavra === ""){
+        if(palavra === ""){ 
             let random = (min,max) => Math.floor(Math.random()*(max - min) + min);
             palavra = listaPalavras[random(0,listaPalavras.length)];
         }
-    }
-
-    function criarUnderlines(){
-        palavraSeparada = palavra.split('');
-        palavraSeparada.map((letra)=>underlines.push('_'));
-        setPalavraNaTela(underlines.map((letra, index)=> <div key={index}>{letra}</div>));
+        const palavraDividida = palavra.split('');
+        setPalavraSeparada(palavraDividida);
+        const listaUnderlines = [];
+        for(let i=0;i<palavraDividida.length;i++){
+            listaUnderlines.push('_');
+        }
+        setUnderlines(listaUnderlines);
+        setPalavraNaTela(underlines);
     }
 
     return (
@@ -40,7 +35,7 @@ export default function Jogo({setHabilitarButton,error,setPalavraNaTela,palavraN
             <div className="botao-palavra">
                 <button onClick={habilitarButton}>Escolher Palavra</button>
                 <div className={`palavra`} key={forcas[error]}>
-                    {palavraNaTela}
+                    {underlines.map((letra, index)=> <div key={index}>{letra}</div>)}
                 </div>
             </div>
         </div>
