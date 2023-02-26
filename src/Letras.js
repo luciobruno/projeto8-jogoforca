@@ -1,4 +1,4 @@
-export default function Letras({ habilitarButton, setError, error, setHabilitado, habilitado, palavraSeparada, setUnderlines,underlines }) {
+export default function Letras({ setVitoriaOuDerrota,habilitarButton, setError, error, setHabilitado, habilitado, palavraSeparada, setUnderlines,underlines, setHabilitarButton }) {
 
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
@@ -21,16 +21,32 @@ export default function Letras({ habilitarButton, setError, error, setHabilitado
             }  
         }
         if(teste===0){
-            setError(error+1);
+            const errada = error;
+            setError(errada+1);
+            if(error===5){
+                setUnderlines(palavraSeparada);
+                setVitoriaOuDerrota("perdeu");
+                setHabilitarButton(true);
         }
     }
+    if(compareArrays()===true){
+        setVitoriaOuDerrota("ganhou");
+        setHabilitarButton(true);
+    }
+
+    }
+
+    function compareArrays() {
+        return palavraSeparada.every((value, index) => value === underlines[index]);
+    }
+
 
     function Letra(props) {
 
         const letra = props.toUpperCase();
 
         return (
-            <button disabled={habilitarButton || habilitado.includes(letra)} onClick={() => desativar(letra)} key={letra}>{letra}</button>
+            <button data-test="letter" disabled={habilitarButton || habilitado.includes(letra)} onClick={() => desativar(letra)} key={letra}>{letra}</button>
         );
 
     }

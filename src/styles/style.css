@@ -65,6 +65,9 @@ button:disabled{
     background-color: #9faab5;
     color: #798a9f;
 }
-.hidden{
-    display: none;
+.ganhou{
+    color: #27AE60;
+}
+.perdeu{
+    color: #FF0000;
 }
