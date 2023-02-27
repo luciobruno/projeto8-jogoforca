@@ -27,8 +27,8 @@ export default function Chute({setHabilitarButton,setError,setUnderlines,setVito
     return(
         <div className="chute">
             <div>Já sei a palavra!</div>
-            <input disabled={habilitarButton} onChange={handleChange} className="input"></input>
-            <button onClick={chute} className="chutar">Chutar</button>
+            <input data-test="guess-input" disabled={habilitarButton} onChange={handleChange} className="input"></input>
+            <button data-test="guess-button" onClick={chute} className="chutar">Chutar</button>
         </div>
     )
 }
